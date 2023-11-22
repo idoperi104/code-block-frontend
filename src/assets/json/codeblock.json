@@ -1,0 +1,23 @@
+[
+  {
+    "_id": "abc123",
+    "title": "Hello World",
+    "question" : "How would you print the text \"Hello, World!\" to the console in JavaScript?",
+    "code": "",
+    "solution": "console.log(\"Hello, World!\");"
+  },
+  {
+    "_id": "abcd23",
+    "title": "Variable Declaration and Assignment",
+    "question" : "Declare two variables, one storing the number 5 and the other storing the string \"Hello\".Print the concatenation of these variables to the console.",
+    "code": "",
+    "solution": "let x = 5;\nlet y = \"Hello\";\nconsole.log(x + \" \" + y);"
+  },
+  {
+    "_id": "dbc123",
+    "title": "Loop (for loop)",
+    "question" : "Create a for loop that iterates five times, and in each iteration, prints \"Iteration 1\", \"Iteration 2\", and so on, up to \"Iteration 5\".",
+    "code": "",
+    "solution": "for (let i = 1; i <= 5; i++) {\n    console.log(\"Iteration \" + i);\n}"
+  }
+]

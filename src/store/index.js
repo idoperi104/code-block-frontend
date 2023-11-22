@@ -5,12 +5,12 @@ import {
   compose,
   legacy_createStore as createStore,
 } from "redux"
-import { productReducer } from "./reducers/product.reducer"
+import { codeblockReducer } from "./reducers/codeblock.reducer"
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const rootReducer = combineReducers({
-  productModule: productReducer,
+  codeblockModule: codeblockReducer,
 })
 
 export const store = createStore(

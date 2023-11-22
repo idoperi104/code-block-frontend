@@ -1,0 +1,70 @@
+.code-block-page {
+    margin-top: em(20px);
+    color: $clr-7;
+
+    .btn-back {
+        font-size: em(16px);
+        width: em(40px);
+        height: em(25px);
+        border-radius: 5px;
+        background-color: $clr-7;
+        border: none;
+        margin-bottom: em(20px);
+
+        svg {
+            color: $clr-1;
+        }
+    }
+
+    .title {
+        font-weight: 600;
+        margin-bottom: em(20px, 24px);
+    }
+
+    .question {
+        font-size: em(20px);
+        margin-bottom: em(20px, 20px);
+        display: flex;
+        flex-direction: column;
+        line-height: 1.5;
+
+        span {
+            font-weight: 600;
+        }
+    }
+
+    .actions-container {
+        height: em(40px);
+
+        .btn-display {
+            font-size: em(16px);
+            padding: 0 em(15px);
+            background-color: transparent;
+            border-radius: 5px 5px 0 0;
+            border: none;
+            height: 100%;
+            color: $clr-7;
+
+            &.active {
+                background-color: $clr-7;
+                color: $clr-1;
+            }
+        }
+
+        .btn-save {
+            font-size: em(16px);
+            padding: 0 em(15px);
+            margin: 0 0 em(5px) 0;
+            border-radius: 5px;
+            background-color: $clr-save;
+            color: $clr-7;
+            border: none;
+        }
+    }
+
+    .code-mirror {
+        height: 400px;
+        width: 100%;
+        overflow-x: auto;
+    }
+}
