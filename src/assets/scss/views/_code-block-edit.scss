@@ -8,7 +8,7 @@
 
     .code-mirror {
         height: 240px;
-        width: 100%;
+        max-width: calc(100vw - 20px);
         border-radius: 5px;
         margin: 0 0 em(16px);
     }

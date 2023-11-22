@@ -18,6 +18,7 @@ export function LobbyPage() {
   return (
     // <section className="lobby-page main-layout">
     <section className="lobby-page">
+      <h2 className="title-page">Choose code block</h2>
       <ul className="code-block-list">
         {codeblocks.map((codeblock) => (
           <li key={codeblock._id} className="code-block-preview flex">

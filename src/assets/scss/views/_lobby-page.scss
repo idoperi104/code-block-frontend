@@ -1,0 +1,14 @@
+.lobby-page{
+    .title-page{
+        font-size: em(28px);
+        margin-top: em(20px,28px);
+        text-align: center;
+    }
+
+    @include mq(small){
+        .title-page{
+            font-size: em(36px);
+            margin-top: em(40px,36px);
+        }
+    }
+}

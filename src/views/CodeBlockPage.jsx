@@ -56,7 +56,6 @@ export function CodeBlockPage() {
   }
 
   function checkSolution() {
-    console.log("codeblock: ", codeblock);
     if (!codeblock) return
     if (codeblock.code.trim() === codeblock.solution.trim()) {
       console.log("well Done!");
