@@ -1,0 +1,29 @@
+.code-block-edit{
+    padding: em(20px) 0 0 0;
+
+    .label{
+        font-size: 18px;
+        margin: 0 0 em(8px, 18px);
+    }
+
+    .code-mirror {
+        height: 240px;
+        width: 100%;
+        border-radius: 5px;
+        margin: 0 0 em(16px);
+    }
+
+    .btn-submit{
+        font-size: em(16px);
+        height: em(40px);
+        padding: 0 em(20px);
+        background-color: $clr-save;
+        color: $clr-7;
+        border: none;
+        border-radius: 5px;
+        
+        &:hover{
+            background-color: $clr-save-hover;
+        }
+    }
+}

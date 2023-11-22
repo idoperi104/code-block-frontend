@@ -1,6 +1,7 @@
 .code-block-page {
     margin-top: em(20px);
     color: $clr-7;
+    width: 100%;
 
     .btn-back {
         font-size: em(16px);
@@ -65,6 +66,5 @@
     .code-mirror {
         height: 400px;
         width: 100%;
-        overflow-x: auto;
     }
 }

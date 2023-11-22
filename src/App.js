@@ -4,6 +4,7 @@ import { LobbyPage } from "./views/LobbyPage"
 import { CodeBlockIndex } from "./cmps/CodeBlockIndex"
 import { AppHeader } from "./cmps/AppHeader"
 import { CodeBlockPage } from "./views/CodeBlockPage"
+import { CodeBlockEdit } from "./views/CodeBlockEdit"
 
 function App() {
   return (
@@ -11,13 +12,14 @@ function App() {
       <section className="main-app">
         <AppHeader />
 
-        <main className="main-container">
+        <main className="main-container main-layout">
           {/* <ScrollToTop /> */}
 
           <Routes>
             <Route path="/" element={<LobbyPage />} />
             <Route path="/codeblock" element={<CodeBlockIndex />} />
             <Route path="/codeblock/:id" element={<CodeBlockPage />} />
+            <Route path="/codeblock/edit/:id?" element={<CodeBlockEdit />} />
           </Routes>
         </main>
       </section>

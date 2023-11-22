@@ -83,7 +83,7 @@
     textarea {
         height: em(40px);
         border: 1px solid $clr-6;
-        border-radius: em(4px);
+        border-radius: em(5px);
         padding: em(8px);
         font-size: em(16px);
         margin: 0 0 em(16px);
@@ -118,39 +118,33 @@
 
 .link-add {
     display: inline-block;
-    width: em(200px);
-    height: em(56px);
-
+    margin-top: em(20px);
+    
     .btn-add {
         color: $clr-6;
-        padding: em(8px, 18px);
+        background-color: $clr-save;
+        padding: em(15px, 18px) em(20px, 18px) em(15px, 18px) em(10px, 18px);
         font-size: 18px;
         min-width: em(200px, 18px);
-        width: max-content;
-        height: em(56px, 18px);
         border: none;
-        background-color: $clr-1;
         border-radius: 5px;
 
         display: grid;
         grid-template-columns: 40px auto;
-        gap: em(8px, 18px);
-        align-items: center;
-        justify-content: start;
 
         .icon {
             height: 100%;
             width: 100%;
-            border: 1px solid $clr-6;
-            border-radius: 50%;
-
             display: flex;
             align-items: center;
             justify-content: center;
+            svg{
+                color: $clr-7;
+            }
         }
 
         &:hover {
-            box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.3);
+            background-color: $clr-save-hover;
         }
     }
 }

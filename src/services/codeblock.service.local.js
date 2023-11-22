@@ -57,6 +57,7 @@ async function save(codeblock) {
 function getEmptyCodeblock() {
   return {
     title: "",
+    question:"",
     code: "",
     solution: "",
   }

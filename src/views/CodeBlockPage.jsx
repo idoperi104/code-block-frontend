@@ -1,11 +1,12 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { codeblockService } from "../services/codeblock.service.local"
 import { useCallback, useEffect, useState } from "react"
-import CodeMirror from "@uiw/react-codemirror"
+import CodeMirror, { EditorState, EditorView } from "@uiw/react-codemirror"
 import { vscodeDark } from "@uiw/codemirror-theme-vscode"
 import { javascript } from "@codemirror/lang-javascript"
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
 
 export function CodeBlockPage() {
   const [codeblock, setCodeblock] = useState(null)
@@ -34,7 +35,7 @@ export function CodeBlockPage() {
     }
   }
 
-  async function onSaveProduct() {
+  async function onSaveCodeblock() {
     try {
       await codeblockService.save({ ...codeblock })
     } catch (error) {
@@ -55,6 +56,7 @@ export function CodeBlockPage() {
   }
 
   function checkSolution() {
+    console.log("codeblock: ", codeblock);
     if (!codeblock) return
     if (codeblock.code.trim() === codeblock.solution.trim()) {
       console.log("well Done!");
@@ -63,7 +65,7 @@ export function CodeBlockPage() {
 
   if (!codeblock) return <div>Loading...</div>
   return (
-    <section className="code-block-page main-layout">
+    <section className="code-block-page">
       <button className="btn-back" onClick={onBack}>
         <FontAwesomeIcon icon={faArrowLeftLong} />
       </button>
@@ -89,7 +91,7 @@ export function CodeBlockPage() {
             solution
           </button>
         </div>
-        <button className="btn-save" onClick={onSaveProduct}>
+        <button className="btn-save" onClick={onSaveCodeblock}>
           save
         </button>
       </div>
@@ -108,9 +110,8 @@ export function CodeBlockPage() {
           className="code-mirror"
           height="100%"
           value={codeblock.solution}
-          extensions={[javascript({ jsx: true })]}
+          extensions={[javascript({ jsx: true }), EditorView.editable.of(false), EditorState.readOnly.of(true)]}
           theme={vscodeDark}
-          readOnly={true}
         />
       )}
     </section>

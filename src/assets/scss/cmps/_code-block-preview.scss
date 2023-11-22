@@ -1,0 +1,30 @@
+.code-block-preview {
+    background-color: $clr-1;
+    border-radius: 5px;
+    min-height: em(170px);
+
+    .info {
+        flex-grow: 1;
+        padding: em(15px) em(15px) 0 em(15px);
+
+
+        .title {
+            font-size: em(20px);
+            margin-bottom: em(10px, 20px);
+            font-weight: 600;
+        }
+
+        .question {
+            font-size: em(18px);
+            margin-bottom: em(10px, 20px);
+        }
+    }
+
+    .actions {
+        padding: 0 em(15px) em(15px) em(15px);
+    }
+
+    @include mq(small) {
+        min-height: em(220px);
+    }
+}

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { loadCodeblocks } from "../store/actions/codeblock.actions"
 import { useEffect } from "react"
+import { NavLink } from "react-router-dom"
 
 export function LobbyPage() {
   const codeblocks = useSelector(
@@ -15,11 +16,15 @@ export function LobbyPage() {
 
   if (!codeblocks) return <div>Loading...</div>
   return (
-    <section className="lobby-page main-layout">
-      <ul className={`code-block-list`}>
+    // <section className="lobby-page main-layout">
+    <section className="lobby-page">
+      <ul className="code-block-list">
         {codeblocks.map((codeblock) => (
-          <li key={codeblock._id} className="lobby-code-block-preview">
-            {codeblock.title}
+          <li key={codeblock._id} className="code-block-preview flex">
+            <NavLink className="info" to={`/codeblock/${codeblock._id}`}>
+              <h3 className="title">{codeblock.title}</h3>
+              <p className="question">{codeblock.question}</p>
+            </NavLink>
           </li>
         ))}
       </ul>
