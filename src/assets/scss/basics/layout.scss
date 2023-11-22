@@ -1,0 +1,42 @@
+// GRIDS
+.simple-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-gap: 30px;
+}
+
+.main-layout {
+    // max-width: 1560px;
+    // margin: auto;
+
+    display: grid;
+    grid-template-columns: em(10px) 1fr em(10px);
+
+    &>* {
+        grid-column: 2;
+    }
+
+    &>.full {
+        grid-column: 1 / -1;
+    }
+
+    // @include mq-max(small) {
+    // }
+    
+    @include mq(small) {
+        grid-template-columns: em(15px) 1fr em(15px);
+    }
+
+    @include mq(medium) {
+        grid-template-columns: 1fr 990px 1fr;
+    }
+
+    @include mq(large) {
+        grid-template-columns: 1fr 1160px 1fr;
+    }
+
+    @include mq(x-large) {
+        grid-template-columns: 1fr 1560px 1fr;
+
+    }
+}

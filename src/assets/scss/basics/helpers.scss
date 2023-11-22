@@ -1,0 +1,239 @@
+// List
+.clean-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    &>li {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+// Positioning
+.flex {
+    display: flex;
+
+    &.column {
+        flex-direction: column;
+    }
+
+    &.justify-center {
+        justify-content: center;
+    }
+
+    &.align-center {
+        align-items: center;
+    }
+
+    &.wrap {
+        flex-wrap: wrap;
+    }
+
+    &.space-between {
+        justify-content: space-between;
+    }
+
+    &.space-around {
+        justify-content: space-around;
+    }
+
+    &.auto-center {
+        justify-content: center;
+        align-items: center;
+    }
+
+    &.gap-6 {
+        gap: 6px;
+    }
+
+    >*.full-grow {
+        flex: 1;
+    }
+}
+
+.grid {
+    display: grid;
+
+    &.column {
+        grid-auto-flow: column;
+    }
+
+    &.justify-center {
+        justify-items: center;
+    }
+
+    &.align-center {
+        align-content: center;
+    }
+}
+
+.basic-form {
+    display: flex;
+    flex-direction: column;
+    // gap: em(8px);
+
+    label {
+        font-size: 18px;
+        margin: 0 0 em(8px, 18px);
+    }
+
+    input,
+    select,
+    textarea {
+        height: em(40px);
+        border: 1px solid $clr-6;
+        border-radius: em(4px);
+        padding: em(8px);
+        font-size: em(16px);
+        margin: 0 0 em(16px);
+    }
+
+    textarea {
+        height: em(80px);
+        resize: none;
+    }
+
+    .input-checkbox {
+        height: em(20px);
+        width: em(20px);
+        align-self: start;
+    }
+
+    .btn-submit {
+        align-self: flex-end;
+
+        font-size: 16px;
+        height: em(32px);
+        min-width: em(64px);
+        border-radius: em(5px);
+        border: 1px solid $clr-4;
+        color: $clr-6;
+
+        @include hover-supported() {
+            box-shadow: 0px 0px 3px 1px rgb(0, 0, 0, 0.3);
+        }
+    }
+}
+
+.link-add {
+    display: inline-block;
+    width: em(200px);
+    height: em(56px);
+
+    .btn-add {
+        color: $clr-6;
+        padding: em(8px, 18px);
+        font-size: 18px;
+        min-width: em(200px, 18px);
+        width: max-content;
+        height: em(56px, 18px);
+        border: none;
+        background-color: $clr-1;
+        border-radius: 5px;
+
+        display: grid;
+        grid-template-columns: 40px auto;
+        gap: em(8px, 18px);
+        align-items: center;
+        justify-content: start;
+
+        .icon {
+            height: 100%;
+            width: 100%;
+            border: 1px solid $clr-6;
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &:hover {
+            box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.3);
+        }
+    }
+}
+
+// button
+.btn {
+    font-size: 16px;
+    height: em(32px);
+    min-width: em(42px);
+    border-radius: em(5px);
+    border: none;
+    margin-inline-end: em(8px);
+    color: $clr-6;
+
+
+    @include hover-supported() {
+        box-shadow: 0px 0px 3px 1px rgb(0, 0, 0, 0.3);
+    }
+}
+
+.btn-full {
+    font-size: 16px;
+    height: em(32px);
+    width: 100%;
+    border-radius: em(5px);
+    border: 1px solid $clr-4;
+    margin: em(10px) 0;
+    color: $clr-6;
+
+    @include hover-supported() {
+        box-shadow: 0px 0px 3px 1px rgb(0, 0, 0, 0.3);
+    }
+}
+
+//img-uploader
+.img-uploader {
+    // background-color: red;
+    position: relative;
+    width: rem(300px);
+    height: rem(200px);
+    margin-block-end: em(16px);
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .input-img {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        position: absolute;
+        left: 0;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+}
+
+// search bar
+.search-container {
+    height: em(40px);
+    width: em(240px);
+    position: relative;
+    // margin: em(16px) 0;
+
+    .input-search {
+        width: 100%;
+        height: 100%;
+        border: 1px solid $clr-6;
+        border-radius: em(4px);
+        padding: 0 em(32px) 0 0;
+        font-size: em(16px);
+    }
+
+    .icon {
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translate(50%, -50%);
+        color: $clr-5;
+    }
+}

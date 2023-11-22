@@ -1,0 +1,48 @@
+@use 'sass:map';
+
+// Mixin for removing hover effects on iphone screen
+@mixin hover-supported {
+    @media not all and (pointer: coarse) {
+        &:hover {
+            @content;
+        }
+    }
+}
+
+@mixin quotes {
+    &::before {
+        content: open-quote;
+    }
+
+    &::after {
+        content: close-quote;
+    }
+}
+
+/* Breakpoint mixins */
+$breakpoints: (
+    small: em(768px),
+    medium: em(1024px),
+    large: em(1200px),
+    x-large: em(1600px),
+);
+
+@mixin mq-max($key) {
+    $size: map.get($breakpoints, $key);
+
+    @media (max-width: $size) {
+        @content;
+    }
+}
+
+@mixin mq($key) {
+    $size: map.get($breakpoints, $key);
+
+    @media (min-width: $size) {
+        @content;
+    }
+}
+
+@mixin box-shadow() {
+    box-shadow: 0 6px 20px rgb(0 0 0/6%);
+}

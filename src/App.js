@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./assets/scss/global.scss"
+import { Route, HashRouter as Router, Routes } from "react-router-dom"
+import { LobbyPage } from "./views/LobbyPage";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <section className="main-app">
+        {/* <AppHeader /> */}
+
+        <main className="main-container">
+          {/* <ScrollToTop /> */}
+          
+          <Routes>
+            <Route path="/" element={<LobbyPage />} />
+
+          </Routes>
+        </main>
+
+      </section>
+    </Router>
   );
 }
 

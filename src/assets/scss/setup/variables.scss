@@ -1,0 +1,27 @@
+:root {
+    --app-header-height: 52px;
+    --app-footer-height: 120px;
+    --app-height:100%;
+    
+    @include mq(medium) {
+        --app-header-height: 74px;
+        --app-footer-height: 200px;
+    }
+}
+
+$min-height: calc(var(--app-height) - var(--app-header-height) - var(--app-footer-height));
+
+
+// Colors
+$clr-1: #ffffff;
+$clr-2: #e8e8e8;
+$clr-3: #f2f2f2;
+$clr-4: #8c8c8c;
+$clr-5: #525252;
+$clr-6: #000000;
+
+$clr-blue: #346796;
+
+// cover
+$clr-cover-1: #e8e8e86f;
+$clr-cover-2: #00000080;
