@@ -18,7 +18,19 @@
     .nav-container {
         font-size: em(18px);
         display: flex;
-        gap: em(40px);
+        gap: em(20px);
+    }
+
+    @include mq(medium) {
+        padding-inline: em(64px);
+
+        .logo {
+            font-size: em(32px);
+        }
+
+        .nav-container {
+            gap: em(40px);
+        }
     }
 
 }

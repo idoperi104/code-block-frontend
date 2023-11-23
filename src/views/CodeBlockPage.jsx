@@ -8,6 +8,7 @@ import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import noGif from "../assets/imgs/no.gif"
 import yesGif from "../assets/imgs/yes.gif"
+import { Loader } from "../cmps/Loader"
 
 export function CodeBlockPage() {
   const [codeblock, setCodeblock] = useState(null)
@@ -77,20 +78,20 @@ export function CodeBlockPage() {
         setIsDisplayYesGif(true)
         setTimeout(() => {
           setIsDisplayYesGif(false)
-        }, 3000)
+        }, 2000)
         break
       case "no":
         setIsDisplayNoGif(true)
         setTimeout(() => {
           setIsDisplayNoGif(false)
-        }, 3000)
+        }, 2000)
         break
       default:
         break
     }
   }
 
-  if (!codeblock) return <div>Loading...</div>
+  if (!codeblock) return <Loader/>
   return (
     <section className="code-block-page">
       <button className="btn-back" onClick={onBack}>

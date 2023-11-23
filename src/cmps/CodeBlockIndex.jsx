@@ -5,16 +5,22 @@ import {
   removeCodeblock,
 } from "../store/actions/codeblock.actions"
 import { CodeBlockList } from "./CodeBlockList"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
+import { Loader } from "./Loader"
 
 export function CodeBlockIndex() {
   const codeblocks = useSelector(
     (storeState) => storeState.codeblockModule.codeblocks
   )
 
+  const loggedinUser = useSelector(
+    (storeState) => storeState.userModule.loggedinUser
+  )
+
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   useEffect(() => {
     dispatch(loadCodeblocks())
@@ -24,9 +30,9 @@ export function CodeBlockIndex() {
     dispatch(removeCodeblock(codeblockId))
   }, [])
 
-  if (!codeblocks) return <div>Loading...</div>
+  if (!codeblocks) return <Loader/>
+  if (!loggedinUser?.isAdmin) return <Loader/>
   return (
-    // <section className="code-block-index main-layout">
     <section className="code-block-index">
       <Link to="/codeblock/edit" className="link-add">
         <button className="btn-add">

@@ -1,8 +1,17 @@
-import { faUser } from "@fortawesome/free-solid-svg-icons"
+import {
+  faChalkboardUser,
+  faHouse,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useSelector } from "react-redux"
 import { NavLink, useNavigate } from "react-router-dom"
 
 export function AppHeader() {
+  const loggedinUser = useSelector(
+    (storeState) => storeState.userModule.loggedinUser
+  )
+
   const navigate = useNavigate()
 
   function onLogoClicked() {
@@ -16,8 +25,14 @@ export function AppHeader() {
       </h1>
 
       <nav className={`nav-container`}>
-        <NavLink to="/">Lobby</NavLink>
-        <NavLink to="/codeblock">All Code Blocks</NavLink>
+        <NavLink to="/">
+          <FontAwesomeIcon icon={faHouse} />
+        </NavLink>
+        {loggedinUser?.isAdmin && (
+          <NavLink to="/codeblock">
+            <FontAwesomeIcon icon={faChalkboardUser} />
+          </NavLink>
+        )}
         <NavLink to="/login">
           <FontAwesomeIcon icon={faUser} />
         </NavLink>

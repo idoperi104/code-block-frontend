@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { loadCodeblocks } from "../store/actions/codeblock.actions"
 import { useEffect } from "react"
 import { NavLink } from "react-router-dom"
+import { Loader } from "../cmps/Loader"
 
 export function LobbyPage() {
   const codeblocks = useSelector(
@@ -14,7 +15,7 @@ export function LobbyPage() {
     dispatch(loadCodeblocks())
   }, [])
 
-  if (!codeblocks) return <div>Loading...</div>
+  if (!codeblocks) return <Loader/>
   return (
     // <section className="lobby-page main-layout">
     <section className="lobby-page">
