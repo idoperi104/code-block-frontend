@@ -1,8 +1,8 @@
-import { storageService } from "./async-storage.service"
-// import { httpService } from './http.service'
+// import { storageService } from "./async-storage.service"
+import { httpService } from './http.service'
 
 import data from "../assets/json/user.json"
-// import { socketService } from "./socket.service"
+import { socketService } from "./socket.service"
 
 const STORAGE_KEY = "user"
 const STORAGE_KEY_LOGGEDIN_USER = "loggedinUser"
@@ -26,68 +26,69 @@ export const userService = {
 
 
 async function getUsers(filterBy = {}) {
-  let users = await storageService.query(STORAGE_KEY)
+  // let users = await storageService.query(STORAGE_KEY)
 
-  if (!users || users.length === 0) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data))
-    users = data
-  }
+  // if (!users || users.length === 0) {
+  //   localStorage.setItem(STORAGE_KEY, JSON.stringify(data))
+  //   users = data
+  // }
 
-  return users
+  // return users
 
-  // return await httpService.get(`user`, filterBy)
+  return await httpService.get(`user`, filterBy)
 }
 
 async function getById(userId) {
-  const user = await storageService.get("user", userId)
-  // const user = await httpService.get(`user/${userId}`)
+  // const user = await storageService.get("user", userId)
+  const user = await httpService.get(`user/${userId}`)
 
   return user
 }
 
 function remove(userId) {
-  return storageService.remove("user", userId)
-  // return httpService.delete(`user/${userId}`)
+  // return storageService.remove("user", userId)
+  return httpService.delete(`user/${userId}`)
 }
 
 async function update(user) {
-  const updatedUser = await getById(user._id)
-  user = await storageService.put("user", {...updatedUser, ...user})
+  // const updatedUser = await getById(user._id)
+  // user = await storageService.put("user", {...updatedUser, ...user})
 
-  // user = await httpService.put(`user/${user._id}`, user)
+  user = await httpService.put(`user/${user._id}`, user)
 
   return user
 }
 
 async function login(userCred) {
-  const users = await storageService.query("user")
-  const user = users.find(
-    (user) =>
-      user.username === userCred.username && user.password === userCred.password
-  )
+  // const users = await storageService.query("user")
+  // const user = users.find(
+  //   (user) =>
+  //     user.username === userCred.username && user.password === userCred.password
+  // )
 
-  // const user = await httpService.post('auth/login', userCred)
+  const user = await httpService.post('auth/login', userCred)
 
   if (user) {
-    // socketService.login(user._id)
+    socketService.login(user._id)
     return _saveLocalUser(user)
   }
 }
 
 async function signup(userCred) {
-  const user = await storageService.post("user", userCred)
+  // const user = await storageService.post("user", userCred)
 
-  // const user = await httpService.post('auth/signup', userCred)
+  const user = await httpService.post('auth/signup', userCred)
 
-  // socketService.login(user._id)
+  socketService.login(user._id)
 
   return _saveLocalUser(user)
 }
 
 async function logout() {
   sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
-  // socketService.logout()
-  // return await httpService.post('auth/logout')
+  
+  socketService.logout()
+  return await httpService.post('auth/logout')
 }
 
 function getLoggedinUser() {

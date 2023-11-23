@@ -9,22 +9,48 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import noGif from "../assets/imgs/no.gif"
 import yesGif from "../assets/imgs/yes.gif"
 import { Loader } from "../cmps/Loader"
+import {
+  SOCKET_EMIT_SEND_CODE,
+  SOCKET_EMIT_SET_TOPIC,
+  SOCKET_EVENT_MENTOR_MODE,
+  SOCKET_EVENT_UPDATE_CODE,
+  socketService,
+} from "../services/socket.service"
 
 export function CodeBlockPage() {
   const [codeblock, setCodeblock] = useState(null)
   const [isDisplaySolution, setIsDisplaySolution] = useState(false)
   const [isDisplayYesGif, setIsDisplayYesGif] = useState(false)
   const [isDisplayNoGif, setIsDisplayNoGif] = useState(false)
+  const [isMentor, setIsMentor] = useState(false)
 
   const params = useParams()
   const navigate = useNavigate()
+
+  useEffect(() => {
+    socketService.on(SOCKET_EVENT_UPDATE_CODE, onUpdateCode)
+    socketService.on(SOCKET_EVENT_MENTOR_MODE, () => setIsMentor(true))
+  }, [])
 
   useEffect(() => {
     loadCodeblock()
   }, [params.id])
 
   useEffect(() => {
+    socketService.emit(SOCKET_EMIT_SET_TOPIC, codeblock?.title)
+
+    return () => {
+      socketService.emit(SOCKET_EMIT_SET_TOPIC, null)
+    }
+  }, [codeblock?.title])
+
+  useEffect(() => {
+    if (!codeblock) return
     checkSolutionAuto()
+    socketService.emit(SOCKET_EMIT_SEND_CODE, {
+      title: codeblock.title,
+      code: codeblock.code,
+    })
   }, [codeblock?.code])
 
   async function loadCodeblock() {
@@ -47,6 +73,10 @@ export function CodeBlockPage() {
     }
   }
 
+  function onUpdateCode(code) {
+    setCodeblock((prevCodeblock) => ({ ...prevCodeblock, code }))
+  }
+
   function onBack() {
     navigate(-1)
   }
@@ -60,7 +90,6 @@ export function CodeBlockPage() {
   }
 
   function checkSolutionAuto() {
-    if (!codeblock) return
     if (codeblock.code.trim() === codeblock.solution.trim()) {
       showGif("yes")
     }
@@ -91,7 +120,7 @@ export function CodeBlockPage() {
     }
   }
 
-  if (!codeblock) return <Loader/>
+  if (!codeblock) return <Loader />
   return (
     <section className="code-block-page">
       <button className="btn-back" onClick={onBack}>
@@ -99,10 +128,13 @@ export function CodeBlockPage() {
       </button>
 
       <h2 className="title">{codeblock.title}</h2>
+      
+      {isMentor && <h3 className="title">(teacher Mode)</h3>}
 
       <p className="question">
         <span>Question:</span> {codeblock.question}
       </p>
+
 
       <div className="actions-container flex space-between">
         <div className="display-container">
@@ -135,6 +167,8 @@ export function CodeBlockPage() {
           height="100%"
           value={codeblock.code}
           extensions={[javascript({ jsx: true })]}
+          readOnly={isMentor}
+          editable={!isMentor}
           theme={vscodeDark}
           onChange={handleChange}
         />
@@ -143,11 +177,9 @@ export function CodeBlockPage() {
           className="code-mirror"
           height="100%"
           value={codeblock.solution}
-          extensions={[
-            javascript({ jsx: true }),
-            EditorView.editable.of(false),
-            EditorState.readOnly.of(true),
-          ]}
+          extensions={[javascript({ jsx: true })]}
+          readOnly={true}
+          editable={false}
           theme={vscodeDark}
         />
       )}

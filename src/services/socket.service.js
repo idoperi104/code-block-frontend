@@ -1,9 +1,10 @@
 import io from 'socket.io-client'
 import { userService } from './user.service'
 
-export const SOCKET_EMIT_SET_TOPIC = 'admin-set-topic'
-export const SOCKET_EMIT_NEW_ORDER = 'new-order'
-export const SOCKET_EVENT_ADD_ORDER = 'admin-add-order'
+export const SOCKET_EMIT_SET_TOPIC = 'set-topic'
+export const SOCKET_EMIT_SEND_CODE = 'send-code'
+export const SOCKET_EVENT_UPDATE_CODE = 'update-code'
+export const SOCKET_EVENT_MENTOR_MODE = 'new-mentor'
 
 const SOCKET_EMIT_LOGIN = 'set-user-socket'
 const SOCKET_EMIT_LOGOUT = 'unset-user-socket'
@@ -16,7 +17,6 @@ window.socketService = socketService
 
 socketService.setup()
 
-
 function createSocketService() {
   var socket = null
   const socketService = {
@@ -28,7 +28,6 @@ function createSocketService() {
       }, 500)
     },
     on(eventName, cb) {
-      console.log(socket);
       socket.on(eventName, cb)
     },
     off(eventName, cb = null) {
