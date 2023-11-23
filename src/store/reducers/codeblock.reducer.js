@@ -9,7 +9,7 @@ export const REMOVE_USER_CODEBLOCK = "REMOVE_USER_CODEBLOCK"
 const INITIAL_STATE = {
   codeblocks: null,
   filterBy: {
-    title: ""
+    title: "",
   },
 }
 
