@@ -1,4 +1,4 @@
-import { codeblockService } from "../../services/codeblock.service.local"
+import { codeblockService } from "../../services/codeblock.service"
 import {
   REMOVE_CODEBLOCK,
   SET_CODEBLOCKS,

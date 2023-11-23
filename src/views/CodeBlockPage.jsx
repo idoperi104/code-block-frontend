@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom"
-import { codeblockService } from "../services/codeblock.service.local"
+import { codeblockService } from "../services/codeblock.service"
 import { useCallback, useEffect, useState } from "react"
 import CodeMirror, { EditorState, EditorView } from "@uiw/react-codemirror"
 import { vscodeDark } from "@uiw/codemirror-theme-vscode"

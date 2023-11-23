@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { useFormRegister } from "../customHooks/useFormRegister"
-import { codeblockService } from "../services/codeblock.service.local"
+import { codeblockService } from "../services/codeblock.service"
 import { useDispatch } from "react-redux"
 import { useEffect } from "react"
 import CodeMirror from "@uiw/react-codemirror"
