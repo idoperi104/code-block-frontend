@@ -52,7 +52,7 @@ export function CodeBlockEdit() {
         <label htmlFor="title">Title:</label>
         <input {...register("title", "text")} />
         <label htmlFor="question">Question:</label>
-        <input {...register("question", "text")} />
+        <textarea {...register("question", "text")} ></textarea>
       </form>
 
       <p className="label">Code:</p>

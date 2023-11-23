@@ -6,11 +6,14 @@ import { vscodeDark } from "@uiw/codemirror-theme-vscode"
 import { javascript } from "@codemirror/lang-javascript"
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-
+import noGif from "../assets/imgs/no.gif"
+import yesGif from "../assets/imgs/yes.gif"
 
 export function CodeBlockPage() {
   const [codeblock, setCodeblock] = useState(null)
   const [isDisplaySolution, setIsDisplaySolution] = useState(false)
+  const [isDisplayYesGif, setIsDisplayYesGif] = useState(false)
+  const [isDisplayNoGif, setIsDisplayNoGif] = useState(false)
 
   const params = useParams()
   const navigate = useNavigate()
@@ -20,7 +23,7 @@ export function CodeBlockPage() {
   }, [params.id])
 
   useEffect(() => {
-    checkSolution()
+    checkSolutionAuto()
   }, [codeblock?.code])
 
   async function loadCodeblock() {
@@ -55,10 +58,35 @@ export function CodeBlockPage() {
     return isSolution === isDisplaySolution ? "active" : ""
   }
 
-  function checkSolution() {
+  function checkSolutionAuto() {
     if (!codeblock) return
     if (codeblock.code.trim() === codeblock.solution.trim()) {
-      console.log("well Done!");
+      showGif("yes")
+    }
+  }
+
+  function onCheckSolution() {
+    if (!codeblock) return
+    if (codeblock.code.trim() === codeblock.solution.trim()) showGif("yes")
+    else showGif("no")
+  }
+
+  function showGif(gifName) {
+    switch (gifName) {
+      case "yes":
+        setIsDisplayYesGif(true)
+        setTimeout(() => {
+          setIsDisplayYesGif(false)
+        }, 3000)
+        break
+      case "no":
+        setIsDisplayNoGif(true)
+        setTimeout(() => {
+          setIsDisplayNoGif(false)
+        }, 3000)
+        break
+      default:
+        break
     }
   }
 
@@ -90,9 +118,14 @@ export function CodeBlockPage() {
             solution
           </button>
         </div>
-        <button className="btn-save" onClick={onSaveCodeblock}>
-          save
-        </button>
+        <div className="btn-container">
+          <button className="btn-check" onClick={onCheckSolution}>
+            check
+          </button>
+          <button className="btn-save" onClick={onSaveCodeblock}>
+            save
+          </button>
+        </div>
       </div>
 
       {!isDisplaySolution ? (
@@ -109,10 +142,17 @@ export function CodeBlockPage() {
           className="code-mirror"
           height="100%"
           value={codeblock.solution}
-          extensions={[javascript({ jsx: true }), EditorView.editable.of(false), EditorState.readOnly.of(true)]}
+          extensions={[
+            javascript({ jsx: true }),
+            EditorView.editable.of(false),
+            EditorState.readOnly.of(true),
+          ]}
           theme={vscodeDark}
         />
       )}
+
+      {isDisplayYesGif && <img className="gif" src={yesGif} alt="" />}
+      {isDisplayNoGif && <img className="gif" src={noGif} alt="" />}
     </section>
   )
 }
