@@ -1,14 +1,65 @@
 .lobby-page{
     .title-page{
         font-size: em(28px);
-        margin-top: em(20px,28px);
+        margin-top: em(30px,28px);
         text-align: center;
+    }
+
+    .hero-container {
+        height: em(400px);
+        background-size: cover;
+        background-position: center;
+        position: relative;
+
+        .cover {
+            width: 100%;
+            height: 100%;
+            background-color: $clr-6;
+            opacity: 0.1;
+        }
+
+        .content {
+            color: $clr-1;
+            position: absolute;
+            bottom: 50%;
+            right: 50%;
+            transform: translate(50%, 50%);
+            text-align: center;
+            max-width: em(360px);
+            width: 100%;
+
+            .sub-title {
+                font-size: em(20px);
+                font-weight: 600;
+            }
+
+            .title {
+                font-size: em(36px);
+                font-weight: 600;
+            }
+        }
     }
 
     @include mq(small){
         .title-page{
             font-size: em(36px);
-            margin-top: em(40px,36px);
+            margin-top: em(60px,36px);
+        }
+
+        .hero-container {
+            height: em(600px);
+
+            .content {
+                max-width: em(480px);
+
+                .sub-title {
+                    font-size: em(24px);
+                }
+
+                .title {
+                    font-size: em(54px);
+                }
+            }
         }
     }
 }

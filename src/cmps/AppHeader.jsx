@@ -21,7 +21,7 @@ export function AppHeader() {
   return (
     <header className="app-header">
       <h1 onClick={onLogoClicked} className="logo">
-        CodeBlock
+        CODE BLOCK
       </h1>
 
       <nav className={`nav-container`}>

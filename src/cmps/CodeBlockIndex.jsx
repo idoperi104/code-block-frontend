@@ -34,6 +34,7 @@ export function CodeBlockIndex() {
   if (!loggedinUser?.isAdmin) return <Loader/>
   return (
     <section className="code-block-index">
+      <h2 className="title">Teachers Room</h2>
       <Link to="/codeblock/edit" className="link-add">
         <button className="btn-add">
           <div className="icon">

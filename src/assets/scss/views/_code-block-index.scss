@@ -1,0 +1,14 @@
+.code-block-index {
+    .title {
+        font-size: em(32px);
+        margin-top: em(30px, 32px);
+        text-align: center;
+    }
+
+    @include mq(small) {
+        .title {
+            font-size: em(40px);
+            margin-top: em(60px, 40px);
+        }
+    }
+}

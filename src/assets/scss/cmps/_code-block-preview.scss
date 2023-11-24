@@ -5,18 +5,26 @@
 
     .info {
         flex-grow: 1;
-        padding: em(15px) em(15px) 0 em(15px);
+        // padding: em(15px) em(15px) 0 em(15px);
 
 
         .title {
             font-size: em(20px);
-            margin-bottom: em(10px, 20px);
+            margin: 0 0 em(10px, 20px) 0;
             font-weight: 600;
+            background-color: $clr-dark-blue;
+            padding: em(15px) 0 em(10px) 0;
+            text-align: center;
+            color: $clr-1;
+            border-radius: 5px 5px 0 0;
         }
 
         .question {
             font-size: em(18px);
             margin-bottom: em(10px, 20px);
+            padding: 0 em(15px);
+            line-height: 1.5;
+
         }
     }
 

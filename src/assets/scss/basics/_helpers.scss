@@ -121,8 +121,8 @@
     margin-top: em(20px);
     
     .btn-add {
-        color: $clr-6;
-        background-color: $clr-save;
+        color: $clr-1;
+        background-color: $clr-dark-blue;
         padding: em(15px, 18px) em(20px, 18px) em(15px, 18px) em(10px, 18px);
         font-size: 18px;
         min-width: em(200px, 18px);
@@ -139,12 +139,12 @@
             align-items: center;
             justify-content: center;
             svg{
-                color: $clr-7;
+                color: $clr-1;
             }
         }
 
         &:hover {
-            background-color: $clr-save-hover;
+            background-color: $clr-dark-blue-hover;
         }
     }
 }
