@@ -1,0 +1,10 @@
+.app-footer {
+    height: var(--app-footer-height);
+    border-top: 1px solid $border-clr;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: em(10px);
+}

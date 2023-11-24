@@ -9,6 +9,7 @@ import { LoginSignup } from "./views/LoginSignup"
 import { useDispatch } from "react-redux"
 import { loadLoggedinUser } from "./store/actions/user.actions"
 import { useEffect } from "react"
+import { AppFooter } from "./cmps/AppFooter"
 
 function App() {
   const dispatch = useDispatch()
@@ -42,6 +43,8 @@ function App() {
             <Route path="/codeblock/edit/:id?" element={<CodeBlockEdit />} />
           </Routes>
         </main>
+
+        <AppFooter/>
       </section>
     </Router>
   )

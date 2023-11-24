@@ -1,4 +1,6 @@
 .code-block-index {
+    min-height: $min-height;
+
     .title {
         font-size: em(32px);
         margin-top: em(30px, 32px);
