@@ -27,7 +27,7 @@ export function CodeBlockEdit() {
         const codeblock = await codeblockService.getById(codeblockId)
         setCodeblock(codeblock)
       } catch (error) {
-        console.log("error at CodeBlockPage:", error)
+        console.log("error:", error)
       }
     }
   }
